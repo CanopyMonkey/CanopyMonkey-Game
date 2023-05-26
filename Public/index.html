@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+  </head>
+  <body>
+    <script>
+      let app = new PIXI.Application({ width: 1350, height: 745 });
+      document.body.appendChild(app.view);
+      let Backround_0_0 = PIXI.Sprite.from("Backround_0_1.png");
+      let Backround_1_0 = PIXI.Sprite.from("Backround_0_1.png");
+      let Backround_2_0 = PIXI.Sprite.from("Backround_0_1.png");
+      let Backround_3_0 = PIXI.Sprite.from("Backround_0_1.png");
+      let Backround_4_0 = PIXI.Sprite.from("Backround_0_1.png");
+      let Backround_5_0 = PIXI.Sprite.from("Backround_0_1.png");
+      app.stage.addChild(Backround_0_0);
+      
+      let dirtC = -1;
+      let backrC = -1;
+      let slowScroll = [];
+      let fastScroll = [];
+      let func0 = [];
+      let funcC0 = -1;
+      let ground = [];
+      let ceiling = [];
+      let wall = [];
+      let var0 = false;
+      let tHvar;
+      let tXvar0;
+      let tXvar1;
+      let elapsed = 0.0;
+      
+      function bottomFill(length, kind, pic){
+        let full = false;
+        let tvar = 0;
+        if (kind == "g"){
+          while (full == false){
+          dirtC += 1;
+          if (tvar <= length){
+            console.log(tvar);
+            newSprite(645, tvar, true, 100, 100, "F", pic);
+            tvar += 100;
+          }
+          else{
+            full = true;
+          }}}
+        if (kind == "b"){
+          while (full == false){
+          backrC += 1;
+          if (tvar < length){
+            newSprite(645, tvar, true, 100, 100, b, pic);
+            tvar += 1500;
+            }
+          else{
+            full = true;
+            }
+          }
+        }
+      }
+      
+      function newSprite(yv, xv, bar, wid, hit, scroll, pic) {
+          funcC0 += 1;
+          func0.push(pic);
+
+          let tevar = func0[funcC0];
+          func0.push(tevar1);
+          app.stage.addChild(tevar1);
+          console.log(pic);
+          tevar1.y = yv;
+          tevar1.x = xv;
+          tevar1.width = wid;
+          tevar1.height = hit;
+          if (scroll == "F" || scroll == "f"){
+            fastScroll.push(tevar1);
+          }
+          if (scroll == "S" || scroll == "s"){
+            slowScroll.push(tevar1);
+          }
+          if (bar == true){
+            ground.push(tevar1);
+          }
+      }
+      function gravity_p0(name, times){
+        times = Number(times);
+        while (times >= 0){
+          isGround(name, "down");
+          //console.log(var0);
+          if(var0 !== true){
+            name.y += 1;
+            var0 = false;
+          }
+          if (name.y <= 400){}
+          var0 = false;
+          times -= 1;
+        }
+          
+      }
+      function isGround(name, Direc){
+        //console.log(ground[0]);
+        for (let tvar1 in ground){
+          //console.log(tvar1);
+          if (Direc == "down"){
+            //console.log(ground[tvar1].y);
+            tHvar = ground[tvar1].y - 245;
+            tXvar0 = ground[tvar1].x - 210;
+            tXvar1 = ground[tvar1].x + 210;
+            if (name.y == tHvar && name.x >= tXvar0 && name.x <= tXvar1){
+              var0 = true;
+              //console.log("true");
+            }
+          }
+        } 
+      }
+
+      class object_1 {
+        constructor(){
+          this.SPrite;
+          this.velocity = 0;
+          this.time = 0;
+          this.riseLimit = 0;
+          this.upClick = false;
+          this.downClick = false;
+          this.leftClick = false;
+          this.rightClick = false;
+        }
+      }
+
+      document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        var code = event.code;
+        
+        if (name == "ArrowUp"){
+          Monkey1.upClick = false;
+          Monkey1.riseLimit = 0;
+        }
+        if (name == "ArrowDown"){
+          Monkey1.downClick = false;
+        }
+        //console.log(name);
+        if (name == "ArrowLeft"){
+          Monkey1.leftClick = false;
+        }
+        if (name == "ArrowRight"){
+          Monkey1.rightClick = false;
+          }
+      })
+      document.addEventListener('keydown', (event) => {
+        var name = event.key;
+        var code = event.code;
+
+        if (name == "ArrowUp"){
+          Monkey1.upClick = true;
+        }
+        if (name == "ArrowDown"){
+          Monkey1.downClick = true;
+        }
+        if (name == "ArrowLeft"){
+          Monkey1.leftClick = true;
+        }
+        if (name == "ArrowRight"){
+          Monkey1.rightClick = true;
+          }
+      });
+
+
+      bottomFill(3000, "g", PIXI.Sprite.from("Grassy dirt 1.png"));
+      console.log("bottomFill");
+      Backround_0_0.x = 0;
+      Backround_0_0.y = -155;
+      Backround_0_0.width = 1500;
+      Backround_0_0.height = 900;
+      let sprite1 =  PIXI.Sprite.from('Clean Baby Monkey.png');
+      app.stage.addChild(sprite1);
+      Monkey1 = new object_1();
+      Monkey1.SPrite = sprite1;
+      Monkey1.SPrite.x = 300;
+      Monkey1.SPrite.y = 400;
+      Monkey1.SPrite.height = 300;
+      Monkey1.SPrite.width = 300;
+      slowScroll.push(Backround_0_0);
+      
+      
+      
+
+      
+      app.ticker.add((delta) => {
+        elapsed += delta;
+        gravity_p0(Monkey1.SPrite, 2);
+        if (Monkey1.upClick == true){
+          if (Monkey1.riseLimit <= 20){
+          Monkey1.SPrite.y -= 10;
+          Monkey1.riseLimit += 1;
+          }
+        }
+        if (Monkey1.rightClick == true){
+          for (let i in fastScroll){
+            fastScroll[i].x -= 1;
+          }
+          for (let i in slowScroll){
+            slowScroll[i].x -= 1;
+          }
+        }
+        if (Monkey1.leftClick == true){
+          for (let i in fastScroll){
+            fastScroll[i].x += 1;
+          }
+          for (let i in slowScroll){
+            slowScroll[i].x += 1;
+          }
+          //console.log(func0[1].x);
+        }
+
+      });
+      
+      //const spritesy = document.createElement("Spritesy");
+      //spritesy.src = "Sprites.js";
+      //Document.head.prepend(spritesy);
+      
+      
+    </script>
+  </body>
+</html>
