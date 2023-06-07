@@ -38,3 +38,4 @@
           //sprite.x = 100.0 + Math.cos(elapsed/50.0) * 200.0;
           //sprite.y = 300.0 + Math.cos(elapsed/70.0) * 200.0;
   
+          

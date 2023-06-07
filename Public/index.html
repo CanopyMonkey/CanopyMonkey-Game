@@ -2,32 +2,30 @@
 <html>
   <head>
     <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <beat src="Uh oh 1.m4a" id="beat" preload="auto" loop></beat>
   </head>
   <body>
     <script>
       let app = new PIXI.Application({ width: 1350, height: 745 });
       document.body.appendChild(app.view);
-      let Backround_0_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_1_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_2_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_3_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_4_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_5_0 = PIXI.Sprite.from("Backround_0_1.png");
-      app.stage.addChild(Backround_0_0);
       
-      let dirtC = -1;
-      let backrC = -1;
+
       let slowScroll = [];
       let fastScroll = [];
+      let backrounds = [];
       let func0 = [];
-      let funcC0 = -1;
       let ground = [];
       let ceiling = [];
       let wall = [];
-      let var0 = false;
+      let barrier = [];
       let tHvar;
       let tXvar0;
       let tXvar1;
+      let rVar;
+      let temVar;
+      let dirtC = -1;
+      let backrC = -1;
+      let funcC0 = -1;
       let elapsed = 0.0;
       
       function bottomFill(length, kind, pic){
@@ -35,37 +33,36 @@
         let tvar = 0;
         if (kind == "g"){
           while (full == false){
-          dirtC += 1;
-          if (tvar <= length){
-            console.log(tvar);
-            newSprite(645, tvar, true, 100, 100, "F", pic);
-            tvar += 100;
+            dirtC += 1;
+            if (tvar <= length){
+              newSprite(645, tvar, true, 100, 100, "F", pic);
+              tvar += 100;
+            }
+            else{
+              full = true;
+            }
           }
-          else{
-            full = true;
-          }}}
+        }
         if (kind == "b"){
           while (full == false){
-          backrC += 1;
-          if (tvar < length){
-            newSprite(645, tvar, true, 100, 100, b, pic);
-            tvar += 1500;
+            backrC += 1;
+            if (tvar < length){
+              newSprite(0, tvar, false, 1500, 750, "s", pic, true);
+              tvar += 1500;
             }
-          else{
-            full = true;
+            else{
+              full = true;
             }
           }
         }
       }
       
-      function newSprite(yv, xv, bar, wid, hit, scroll, pic) {
+      function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot) {
           funcC0 += 1;
-          func0.push(pic);
 
-          let tevar = func0[funcC0];
+          let tevar1 = PIXI.Sprite.from(pic);
           func0.push(tevar1);
           app.stage.addChild(tevar1);
-          console.log(pic);
           tevar1.y = yv;
           tevar1.x = xv;
           tevar1.width = wid;
@@ -78,42 +75,83 @@
           }
           if (bar == true){
             ground.push(tevar1);
+            ceiling.push(tevar1);
+            wall.push(tevar1);
+          }
+          if (bOrNot == true){
+            backrounds.push(tevar1);
           }
       }
       function gravity_p0(name, times){
         times = Number(times);
         while (times >= 0){
-          isGround(name, "down");
-          //console.log(var0);
-          if(var0 !== true){
-            name.y += 1;
-            var0 = false;
+          isTouch(name, "down");
+          if(name.downT !== true){
+            name.SPrite.y += 1;
           }
-          if (name.y <= 400){}
-          var0 = false;
+          
+          name.downT = false;
           times -= 1;
         }
-          
-      }
-      function isGround(name, Direc){
+              }
+      function isTouch(name, Direc){
         //console.log(ground[0]);
-        for (let tvar1 in ground){
-          //console.log(tvar1);
-          if (Direc == "down"){
-            //console.log(ground[tvar1].y);
-            tHvar = ground[tvar1].y - 245;
-            tXvar0 = ground[tvar1].x - 210;
-            tXvar1 = ground[tvar1].x + 210;
-            if (name.y == tHvar && name.x >= tXvar0 && name.x <= tXvar1){
-              var0 = true;
-              //console.log("true");
+        if (Direc == "wall"){
+            for (let tevar1 in wall){
+              let tXvar00 = wall[tevar1].x - 205;
+              let tXvar10 = wall[tevar1].x - 145;
+              let tYvar00 = wall[tevar1].y - 245;
+              let tYvar10 = wall[tevar1].y + 0;
+              
+              let tXvar01 = wall[tevar1].x - 20;
+              let tXvar11 = wall[tevar1].x + 0;
+              
+              if (name.SPrite.x < tXvar10 && name.SPrite.y > tYvar00 && name.SPrite.x > tXvar00 && name.SPrite.y < tYvar10){
+                name.leftT = true;
+              }
+              
+              if (name.SPrite.y > tYvar00 && name.SPrite.x > tXvar01 && name.SPrite.y < tYvar10 && name.SPrite.x < tXvar11){
+                name.rightT = true;
+              }
+            }
+          }
+          if (Direc == "up"){
+            for (let tvar1 in ceiling){
+              tHvar = ground[tvar1].y + name.SPrite.width / 25 * 8;
+              tXvar0 = ground[tvar1].x - name.SPrite.width;
+              tXvar1 = ground[tvar1].x;
+              if(name == Monkey1){
+                tXvar0 += 80;
+                tXvar1 += 20;
+              }
+              if (name.SPrite.y == tHvar && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
+                name.upT = true;
+              }
+            }
+          }
+        if (Direc == "down"){
+          for (let tvar1 in ground){
+            if (tvar1 !== name.name){
+              tHvar = ground[tvar1].y - name.SPrite.height;
+              tHvar += 5;
+              //console.log(tHvar);
+              tXvar0 = ground[tvar1].x - name.SPrite.width;
+              tXvar1 = ground[tvar1].x;
+              
+              if (name == Monkey1){
+                tXvar0 += 80;
+                tXvar1 += 40;
+              } if (name.SPrite.y == tHvar && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
+                name.downT = true;
+              }
             }
           }
         } 
       }
 
       class object_1 {
-        constructor(){
+        constructor(name){
+          this.name = name;
           this.SPrite;
           this.velocity = 0;
           this.time = 0;
@@ -122,6 +160,10 @@
           this.downClick = false;
           this.leftClick = false;
           this.rightClick = false;
+          this.upT = false;
+          this.downT = false;
+          this.rightT = false;
+          this.leftT = false;
         }
       }
 
@@ -160,54 +202,107 @@
         if (name == "ArrowRight"){
           Monkey1.rightClick = true;
           }
+        if (name == "h"){
+          anty.SPrite.x = Monkey1.SPrite.x;
+          anty.SPrite.y = Monkey1.SPrite.y;
+        }
       });
 
+      bottomFill(5000, "b","Backround_0_1.png");
+      newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
+      bottomFill(10000, "g", "Grassy dirt 1.png");
 
-      bottomFill(3000, "g", PIXI.Sprite.from("Grassy dirt 1.png"));
+      /*var sound = new Howl({
+  src: ['sound.mp3']
+});
+
+sound.play();*/
       console.log("bottomFill");
-      Backround_0_0.x = 0;
-      Backround_0_0.y = -155;
-      Backround_0_0.width = 1500;
-      Backround_0_0.height = 900;
-      let sprite1 =  PIXI.Sprite.from('Clean Baby Monkey.png');
-      app.stage.addChild(sprite1);
-      Monkey1 = new object_1();
-      Monkey1.SPrite = sprite1;
-      Monkey1.SPrite.x = 300;
-      Monkey1.SPrite.y = 400;
-      Monkey1.SPrite.height = 300;
-      Monkey1.SPrite.width = 300;
-      slowScroll.push(Backround_0_0);
       
+      Monkey1 = new object_1("Monkey");
+      anty = new object_1("Anty");
+      anty.SPrite = PIXI.Sprite.from('anty_1.png');
+      Monkey1.SPrite =  PIXI.Sprite.from('Clean Baby Monkey.png');
+      app.stage.addChild(Monkey1.SPrite);
+      app.stage.addChild(anty.SPrite);
+      anty.SPrite.x = 600;
+      anty.SPrite.y = 100;
+      anty.SPrite.height = 75;
+      anty.SPrite.width = 150;
+      fastScroll.push(anty.SPrite);
+      Monkey1.SPrite.x = 475;
+      Monkey1.SPrite.y = 100;
+      Monkey1.SPrite.height = 250;
+      Monkey1.SPrite.width = 250;
+      //let beat = new Audio('C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game\Public/Uh oh 1.m4a');
       
+      let beat = document.getElementById("Uh oh 1.m4a");
+      //beat.play();
       
+      //const sound = PIXI.sound.Sound.from('resources/boing.mp3');
+      //sound.play();
 
       
       app.ticker.add((delta) => {
         elapsed += delta;
-        gravity_p0(Monkey1.SPrite, 2);
+
+        isTouch(Monkey1, "wall");
+        gravity_p0(Monkey1, 2);
+        gravity_p0(anty, 2);
+
         if (Monkey1.upClick == true){
           if (Monkey1.riseLimit <= 20){
-          Monkey1.SPrite.y -= 10;
+            rVar = 0;
+            while (rVar < 10){
+              isTouch(Monkey1, "up");
+              if (Monkey1.upT == false){
+                Monkey1.SPrite.y -= 1;
+              }
+              
+              Monkey1.upT = false;
+              rVar += 1;
+            }
           Monkey1.riseLimit += 1;
+            
+          Monkey1.upT = false;
           }
         }
+
+
         if (Monkey1.rightClick == true){
-          for (let i in fastScroll){
-            fastScroll[i].x -= 1;
+          if (Monkey1.leftT == false){
+            for (let i in fastScroll){
+              fastScroll[i].x -= 7;
+            }
+            for (let i in slowScroll){
+              slowScroll[i].x -= 2;
+            }
           }
-          for (let i in slowScroll){
-            slowScroll[i].x -= 1;
+          else{
+            Monkey1.leftT = false;
           }
         }
+
+
         if (Monkey1.leftClick == true){
-          for (let i in fastScroll){
-            fastScroll[i].x += 1;
+          if (Monkey1.rightT == false){
+            if (backrounds[0].x < 0){
+              for (let i in fastScroll){
+                fastScroll[i].x += 7;
+              }
+              for (let i in slowScroll){
+                slowScroll[i].x += 2;
+              }
+            }
           }
-          for (let i in slowScroll){
-            slowScroll[i].x += 1;
+          else{
+            Monkey1.rightT = false;
           }
-          //console.log(func0[1].x);
         }
 
       });
