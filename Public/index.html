@@ -118,7 +118,7 @@
           if (Direc == "up"){
             for (let tvar1 in ceiling){
               tHvar = ground[tvar1].y + name.SPrite.width / 25 * 8;
-              tXvar0 = ground[tvar1].x - name.SPrite.width;
+              tXvar0 = ground[tvar1].x - (name.SPrite.width) + (name.SPrite.width / 10);
               tXvar1 = ground[tvar1].x;
               if(name == Monkey1){
                 tXvar0 += 80;
