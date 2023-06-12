@@ -23,8 +23,8 @@
       let tXvar1;
       let rVar;
       let temVar;
-      let botLeftP;
-      let topRightP;
+      let botLeftP = true;
+      let topRightP = true;
       let dirtC = -1;
       let backrC = -1;
       let funcC0 = -1;
@@ -61,12 +61,19 @@
       
       function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot, optName) {
         funcC0 += 1;
-        if (optName !== undefined){
-
-        } else {
-          let tevar1 = PIXI.Sprite.from(pic);
+        let tevar1;
+        console.log(optName);
+        if (typeof optName === 'undefined'){
+          console.log("defined");
+          tevar1 = PIXI.Sprite.from(pic);
           func0.push(tevar1);
           app.stage.addChild(tevar1);
+        } else {
+          console.log(66);
+          optName = PIXI.Sprite.from(pic);
+          func0.push(optName);
+          app.stage.addChild(optName);
+          tevar1 = optName;
         }
         tevar1.y = yv;
         tevar1.x = xv;
@@ -213,14 +220,17 @@
       });
       function isBorder (side){
         if (side == "left"){
-          if ()
+          if (true){
+
+          }
         }
       }
 
-      newSprite(0, 749, false, 1, 1, "f", "Nothing ToSeeHere.png");
+      newSprite(749, 0, false, 1, 1, "f", "Nothing ToSeeHere.png", false, botLeftP);
       newSprite(9999, -2250, false, 1, 1, "f", "Nothing ToSeeHere.png");
-      bottomFill(5000, "b","Backround_0_1.png", 0);
-      bottomFill(5000, "b","Backround_0_1_1.png", -750);
+      bottomFill(5000, "b", "Backround_0_1.png", 0);
+      bottomFill(5000, "b", "Backround_0_1_1.png", -750);
+      bottomFill(5000, "b", "Backround_0_1_2.png", -1500);
       newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
