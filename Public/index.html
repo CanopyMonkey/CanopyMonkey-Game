@@ -23,12 +23,14 @@
       let tXvar1;
       let rVar;
       let temVar;
+      let botLeftP;
+      let topRightP;
       let dirtC = -1;
       let backrC = -1;
       let funcC0 = -1;
       let elapsed = 0.0;
       
-      function bottomFill(length, kind, pic){
+      function bottomFill(length, kind, pic, heightP){
         let full = false;
         let tvar = 0;
         if (kind == "g"){
@@ -47,7 +49,7 @@
           while (full == false){
             backrC += 1;
             if (tvar < length){
-              newSprite(0, tvar, false, 1500, 750, "s", pic, true);
+              newSprite(heightP, tvar, false, 1500, 750, "s", pic, true);
               tvar += 1500;
             }
             else{
@@ -57,30 +59,33 @@
         }
       }
       
-      function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot) {
-          funcC0 += 1;
+      function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot, optName) {
+        funcC0 += 1;
+        if (optName !== undefined){
 
+        } else {
           let tevar1 = PIXI.Sprite.from(pic);
           func0.push(tevar1);
           app.stage.addChild(tevar1);
-          tevar1.y = yv;
-          tevar1.x = xv;
-          tevar1.width = wid;
-          tevar1.height = hit;
-          if (scroll == "F" || scroll == "f"){
-            fastScroll.push(tevar1);
-          }
-          if (scroll == "S" || scroll == "s"){
-            slowScroll.push(tevar1);
-          }
-          if (bar == true){
-            ground.push(tevar1);
-            ceiling.push(tevar1);
-            wall.push(tevar1);
-          }
-          if (bOrNot == true){
-            backrounds.push(tevar1);
-          }
+        }
+        tevar1.y = yv;
+        tevar1.x = xv;
+        tevar1.width = wid;
+        tevar1.height = hit;
+        if (scroll == "F" || scroll == "f"){
+          fastScroll.push(tevar1);
+        }
+        if (scroll == "S" || scroll == "s"){
+          slowScroll.push(tevar1);
+        }
+        if (bar == true){
+          ground.push(tevar1);
+          ceiling.push(tevar1);
+          wall.push(tevar1);
+        }
+        if (bOrNot == true){
+          backrounds.push(tevar1);
+        }
       }
       function gravity_p0(name, times){
         times = Number(times);
@@ -93,23 +98,22 @@
           name.downT = false;
           times -= 1;
         }
-              }
+      }
       function isTouch(name, Direc){
-        //console.log(ground[0]);
         if (Direc == "wall"){
             for (let tevar1 in wall){
-              let tXvar00 = wall[tevar1].x - 205;
-              let tXvar10 = wall[tevar1].x - 145;
-              let tYvar00 = wall[tevar1].y - 245;
+              let tXvar00 = wall[tevar1].x - 185;
+              let tXvar10 = wall[tevar1].x - 165;
+              let tYvar00 = wall[tevar1].y - (name.SPrite.height / 2 + (name.SPrite.height / 2)) + (name.SPrite.height / 40);
               let tYvar10 = wall[tevar1].y + (name.SPrite.height / 3);
               
               let tXvar01 = wall[tevar1].x - 20;
-              let tXvar11 = wall[tevar1].x + 0;
-              
+              let tXvar11 = wall[tevar1].x + 38;
+              //left
               if (name.SPrite.x < tXvar10 && name.SPrite.y > tYvar00 && name.SPrite.x > tXvar00 && name.SPrite.y < tYvar10){
                 name.leftT = true;
               }
-              
+              //right
               if (name.SPrite.y > tYvar00 && name.SPrite.x > tXvar01 && name.SPrite.y < tYvar10 && name.SPrite.x < tXvar11){
                 name.rightT = true;
               }
@@ -207,8 +211,16 @@
           anty.SPrite.y = Monkey1.SPrite.y;
         }
       });
+      function isBorder (side){
+        if (side == "left"){
+          if ()
+        }
+      }
 
-      bottomFill(5000, "b","Backround_0_1.png");
+      newSprite(0, 749, false, 1, 1, "f", "Nothing ToSeeHere.png");
+      newSprite(9999, -2250, false, 1, 1, "f", "Nothing ToSeeHere.png");
+      bottomFill(5000, "b","Backround_0_1.png", 0);
+      bottomFill(5000, "b","Backround_0_1_1.png", -750);
       newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
