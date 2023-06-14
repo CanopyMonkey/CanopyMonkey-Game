@@ -99,7 +99,18 @@
         while (times >= 0){
           isTouch(name, "down");
           if(name.downT !== true){
-            name.SPrite.y += 1;
+            
+            if (name == Monkey1){
+              for (let s in slowScroll){
+                slowScroll[s].y -= 0.285;
+              }
+              for (let f in fastScroll){
+                fastScroll[f].y -= 1;
+              }
+            } if (name !== Monkey1){
+              name.SPrite.y += 1;
+            }
+            
           }
           
           name.downT = false;
@@ -214,8 +225,9 @@
           Monkey1.rightClick = true;
           }
         if (name == "h"){
-          anty.SPrite.x = Monkey1.SPrite.x;
-          anty.SPrite.y = Monkey1.SPrite.y;
+          
+      Monkey1.SPrite.x = 540;
+      Monkey1.SPrite.y = 225.5;
         }
       });
       function isBorder (side){
@@ -257,8 +269,8 @@ sound.play();*/
       anty.SPrite.height = 75;
       anty.SPrite.width = 150;
       fastScroll.push(anty.SPrite);
-      Monkey1.SPrite.x = 475;
-      Monkey1.SPrite.y = 100;
+      Monkey1.SPrite.x = 540;
+      Monkey1.SPrite.y = 225;
       Monkey1.SPrite.height = 250;
       Monkey1.SPrite.width = 250;
       //let beat = new Audio('C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game\Public/Uh oh 1.m4a');
@@ -274,16 +286,24 @@ sound.play();*/
         elapsed += delta;
 
         isTouch(Monkey1, "wall");
-        gravity_p0(Monkey1, 2);
+        gravity_p0(Monkey1, 4);
         gravity_p0(anty, 2);
 
         if (Monkey1.upClick == true){
           if (Monkey1.riseLimit <= 20){
             rVar = 0;
-            while (rVar < 10){
+            while (rVar < 20){
               isTouch(Monkey1, "up");
               if (Monkey1.upT == false){
-                Monkey1.SPrite.y -= 1;
+
+                //Monkey1.SPrite.y -= 1;
+
+                for (let s in slowScroll){
+                  slowScroll[s].y += 0.285;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y +=1;
+                }
               }
               
               Monkey1.upT = false;
