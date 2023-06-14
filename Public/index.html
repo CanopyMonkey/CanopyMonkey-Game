@@ -33,6 +33,7 @@
       function bottomFill(length, kind, pic, heightP){
         let full = false;
         let tvar = 0;
+        
         if (kind == "g"){
           while (full == false){
             dirtC += 1;
@@ -46,6 +47,7 @@
           }
         }
         if (kind == "b"){
+          tevar = -200;
           while (full == false){
             backrC += 1;
             if (tvar < length){
