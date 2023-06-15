@@ -1,0 +1,52 @@
+{"frames": {
+
+"Clean Baby Monkey.png":
+{
+	"frame": {"x":0,"y":864,"w":883,"h":883},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":883,"h":883},
+	"sourceSize": {"w":883,"h":883}
+},
+"Dir.Baby.Mon.Cry.(1).png":
+{
+	"frame": {"x":0,"y":0,"w":864,"h":864},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":864,"h":864},
+	"sourceSize": {"w":864,"h":864}
+},
+"Dir.Baby.Mon.Cry.(2).png":
+{
+	"frame": {"x":864,"y":0,"w":864,"h":864},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":864,"h":864},
+	"sourceSize": {"w":864,"h":864}
+},
+"Dir.Baby.Mon.Cry.(3).png":
+{
+	"frame": {"x":1728,"y":0,"w":864,"h":864},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":864,"h":864},
+	"sourceSize": {"w":864,"h":864}
+},
+"Dirty Baby Monkey.png":
+{
+	"frame": {"x":883,"y":864,"w":883,"h":883},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":883,"h":883},
+	"sourceSize": {"w":883,"h":883}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "baby_Monkey_Dirt_Cry.png",
+	"format": "RGBA8888",
+	"size": {"w":2592,"h":1747},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1590695c09afded2bc19cf8e93c5dd8f:91284ba89092088525df1d44a32d5e77:b44b83af3bfab37d96631661b75b29a9$"
+}
+}
