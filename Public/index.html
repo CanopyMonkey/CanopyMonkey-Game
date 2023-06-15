@@ -105,8 +105,7 @@
           if(name.downT !== true){
             
 
-
-            if (name == Monkey1){
+            /*if (name == Monkey1){
               console.log("botleft: " + botLeftP.y + " Monkey: " + Monkey1.SPrite.y);
               
               if (botLeftP.y === 749) {
@@ -122,7 +121,21 @@
               }
 
               
-            } if (name !== Monkey1){
+            } */
+
+            if (name == Monkey1){
+              
+                for (let s in slowScroll){
+                  slowScroll[s].y -= 0.285;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y -= 1;
+                }
+              
+
+              
+            } 
+            if (name !== Monkey1){
               name.SPrite.y += 1;
             }
             
