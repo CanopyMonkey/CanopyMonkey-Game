@@ -105,13 +105,15 @@
           if(name.downT !== true){
             
 
-            /*if (name == Monkey1){
+            if (name == Monkey1){
               console.log("botleft: " + botLeftP.y + " Monkey: " + Monkey1.SPrite.y);
-              
-              if (botLeftP.y === 749) {
+              //console.log(Monkey1.SPrite.y + ", " + fastScroll[10].y);
+              console.log();
+              if (botLeftP.y >= 749) {
                 Monkey1.SPrite.y += 1;
+                console.log("MMMMMMMMMMMMMM!");
 
-              } if (botLeftP.x >= 749){
+              } if (botLeftP.y < 749){
                 for (let s in slowScroll){
                   slowScroll[s].y -= 0.285;
                 }
@@ -121,9 +123,9 @@
               }
 
               
-            } */
+            }
 
-            if (name == Monkey1){
+            /*if (name == Monkey1){
               
                 for (let s in slowScroll){
                   slowScroll[s].y -= 0.285;
@@ -137,7 +139,7 @@
             } 
             if (name !== Monkey1){
               name.SPrite.y += 1;
-            }
+            }*/
             
           }
           
@@ -254,8 +256,7 @@
           }
         if (name == "h"){
           
-      Monkey1.SPrite.x = 540;
-      Monkey1.SPrite.y = 225.5;
+      
         }
       });
       function isBorder (side){
@@ -272,7 +273,7 @@
       app.stage.addChild(topRightP);
       botLeftP.y = 749, x = 0, width = 1, height = 1;
       topRightP.y = -1500, x = 5000, width = 1, height = 1;
-      slowScroll.push(botLeftP, topRightP);
+      fastScroll.push(botLeftP, topRightP);
       console.log(botLeftP);
       //newSprite(749, 0, false, 1, 1, "f", "Nothing ToSeeHere.png", false, botLeftP);
       //newSprite(-1500, 5000, false, 1, 1, "f", "Nothing ToSeeHere.png", false, topRightP);
