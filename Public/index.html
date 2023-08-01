@@ -2,15 +2,17 @@
 <html>
   <head>
     <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type=”module” src=”my-module.js”></script>
     <beat src="Uh oh 1.m4a" id="beat" preload="auto" loop></beat>
   </head>
   <body>
     <script>
       let app = new PIXI.Application({ width: 1350, height: 745 });
       document.body.appendChild(app.view);
-      //C:\Windows\System32\cmd.exe /k cd C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
+      //C:\Windows\System32\cmd.exe /k cd C:\Users\---------\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
       
       let slowScroll = [];
+      //export {slowScroll};
       let fastScroll = [];
       let backrounds = [];
       let func0 = [];
@@ -106,15 +108,15 @@
             
 
             if (name == Monkey1){
-              console.log("botleft: " + botLeftP.y + " Monkey: " + Monkey1.SPrite.y);
+              //console.log("botleft: " + botLeftP.y + " Monkey: " + Monkey1.SPrite.y);
               //console.log(Monkey1.SPrite.y + ", " + fastScroll[10].y);
               console.log();
               if (botLeftP.y <= 749) {
                 Monkey1.SPrite.y += 1;
-                console.log("MMMMMMMMMMMMMM!");
+                //console.log("MMMMMMMMMMMMMM!");
 
               } if (botLeftP.y > 749){
-                console.log("Moo");
+                //console.log("Moo");
                 for (let s in slowScroll){
                   slowScroll[s].y -= 0.285;
                 }
@@ -170,15 +172,19 @@
           }
           if (Direc == "up"){
             for (let tvar1 in ceiling){
-              tHvar = ground[tvar1].y + name.SPrite.width / 25 * 8;
+              tHvar = ground[tvar1].y + ((name.SPrite.height / 25) * 8);
+              tHvar2 = tHvar;
+              tHvar2 -= 1;
               tXvar0 = ground[tvar1].x - (name.SPrite.width) + (name.SPrite.width / 10);
               tXvar1 = ground[tvar1].x;
               if(name == Monkey1){
                 tXvar0 += 80;
                 tXvar1 += 20;
+                //alert("Monkey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
               }
-              if (name.SPrite.y == tHvar && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
+              if (name.SPrite.y <= tHvar && name.SPrite.y >= tHvar2 && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
                 name.upT = true;
+                console.log(name.upT);
               }
             }
           }
@@ -339,7 +345,7 @@ sound.play();*/
 
                 //Monkey1.SPrite.y -= 1;
                 if (botLeftP.y >= 749 && Monkey1.SPrite.y >= 225){
-                  console.log("lalalalalalalala!");
+                  //console.log("lalalalalalalala!");
                   Monkey1.SPrite.y -= 0.8;
                 } else {
                   for (let s in slowScroll){
