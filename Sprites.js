@@ -30,12 +30,12 @@
       dirt_5.y = 645;
       dirt_5.width = 100;
       dirt_5.height = 100;*/
-      if (Monkey1.y <= 400){
+      /*if (Monkey1.y <= 400){
             Monkey1.y += 1;
-          }
+          }*/
           //sprite.length = 0.0 + Math.cos(elapsed/50.0) * 100.0;
           //sprite.height = 0.0 + Math.cos(elapsed/50.0) * 50.0;
           //sprite.x = 100.0 + Math.cos(elapsed/50.0) * 200.0;
           //sprite.y = 300.0 + Math.cos(elapsed/70.0) * 200.0;
-  
+window.open();
           
