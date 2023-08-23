@@ -2,17 +2,22 @@
 <html>
   <head>
     <script src="https://pixijs.download/release/pixi.min.js"></script>
-    
+    <script type="text/javascript">
+      alert("This alert box was called with the onload event");
+    </script>
+    <script type="text/javascript" src="howler.js-master/src/howler.core.js"></script>
     <beat src="Uh oh 1.m4a" id="beat" preload="auto" loop></beat>
   </head>
+
   <body>
     <script type=”module” src=”./Main_Code/Functions.js”></script>
     <script>
       let app = new PIXI.Application({ width: 1350, height: 745 });
       document.body.appendChild(app.view);
       //C:\Windows\System32\cmd.exe /k cd C:\Users\---------\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
-      
+      //export let name1, name2;
       let slowScroll = [];
+      //require('./ES6.js');
       //export {slowScroll};
       let fastScroll = [];
       let backrounds = [];
@@ -310,7 +315,7 @@ sound.play();*/
       app.stage.addChild(Monkey1.SPrite);
       app.stage.addChild(anty.SPrite);
       anty.SPrite.x = 600;
-      anty.SPrite.y = 100;
+      anty.SPrite.y = -1000;
       anty.SPrite.height = 75;
       anty.SPrite.width = 150;
       fastScroll.push(anty.SPrite);
@@ -335,7 +340,7 @@ sound.play();*/
 
         isTouch(Monkey1, "wall");
         gravity_p0(Monkey1, 4);
-        gravity_p0(anty, 2);
+        gravity_p0(anty, 7);
 
         if (Monkey1.upClick == true){
           if (Monkey1.riseLimit <= 20){

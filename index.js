@@ -19,9 +19,9 @@ console.log('Output was:\n', output);*/
 //window.open('localhost:3000');
 //<a href="https://www.codexworld.com" target="_blank">Visit CodexWorld</a>
 //window.open('https://www.codexworld.com', '_blank');
-if (typeof window !== 'undefined') {
+/*if (typeof window !== 'undefined') {
     console.log('You are on the browser,You are good to go')
     } else {
     console.log('You are on the server,Cannot execute')
-   }
+   }*/
 //app.server.close;
