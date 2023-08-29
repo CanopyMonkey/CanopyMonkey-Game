@@ -270,7 +270,7 @@
           Monkey1.rightClick = true;
           }
         if (name == "h"){
-          //window.open("localhost:3000", 'CanopyMonkey');
+          window.open("localhost:3000", 'CanopyMonkey');
       
         }
       });
@@ -287,7 +287,7 @@
       app.stage.addChild(botLeftP);
       app.stage.addChild(topRightP);
       botLeftP.y = 749, x = 0, width = 1, height = 1;
-      topRightP.y = -1500, x = 5000, width = 1, height = 1;
+      topRightP.y = -1500, topRightP.x = 10295, width = 1, height = 1;
       fastScroll.push(botLeftP, topRightP);
       console.log(botLeftP);
       bottomFill(4000, "b", "Backround_0_1.png", 0);
@@ -296,6 +296,9 @@
       newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300, 1600, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(0, 540, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(0, 640, true, 100, 100, "f", "Grassy dirt 1.png");
       //newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
       //newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       //newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
@@ -376,12 +379,19 @@ sound.play();*/
 
         if (Monkey1.rightClick == true){
           if (Monkey1.leftT == false){
+            //console.log(topRightP.x);
+            if (topRightP.x > 1555){
+              //console.log("Workie!");
+            
+
+            
             for (let i in fastScroll){
               fastScroll[i].x -= 7;
             }
             for (let i in slowScroll){
               slowScroll[i].x -= 2;
             }
+          }
           }
           else{
             Monkey1.leftT = false;
@@ -412,6 +422,5 @@ sound.play();*/
       //
       
     </script>
-    
   </body>
 </html>
