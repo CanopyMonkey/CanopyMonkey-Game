@@ -14,6 +14,33 @@
     <script>
       let app = new PIXI.Application({ width: 1350, height: 745 });
       document.body.appendChild(app.view);
+      
+
+      /*function deadOrAlive (){
+        alert("Spiderman is " + spiderMan);
+      }
+
+      spiderMan = "Dead";
+      
+      deadOrAlive();
+
+      spiderMan = "happy";
+
+      deadOrAlive();
+
+      spiderMan = "faster than flash";
+
+      deadOrAlive();
+
+      SpiderMan.Sprite =  PIXI.Sprite.from("ant_1.png");
+      app.stage.addChild(SpiderMan);
+      slowScroll.push(SpiderMan);*/
+      
+
+
+
+
+
       //C:\Windows\System32\cmd.exe /k cd C:\Users\---------\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
       //export let name1, name2;
       let slowScroll = [];
@@ -26,12 +53,15 @@
       let ceiling = [];
       let wall = [];
       let barrier = [];
+      let evil_ant_1 = [];
       let tHvar;
       let tXvar0;
       let tXvar1;
       let rVar;
+      let spacebar;
       let temVar;
       let dirtC = -1;
+      let bCount = 0;
       let backrC = -1;
       let funcC0 = -1;
       let elapsed = 0.0;
@@ -58,6 +88,8 @@
             backrC += 1;
             if (tvar < length){
               newSprite(heightP, tvar, false, 1500, 750, "s", pic, true);
+              bCount ++;
+              console.log(bCount);
               tvar += 1500;
             }
             else{
@@ -70,6 +102,10 @@
       function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot, optName) {
         funcC0 += 1;
         let tevar1;
+
+        if (bOrNot == "gravity-ob"){
+
+        }
         /*if (optName == undefined){
           
           
@@ -83,6 +119,7 @@
           tevar1 = optName;
           console.log(botLeftP);
         }*/
+
         tevar1 = PIXI.Sprite.from(pic);
         func0.push(tevar1);
         app.stage.addChild(tevar1);
@@ -217,7 +254,7 @@
       }
 
       class object_1 {
-        constructor(name){
+        constructor(name, main_boolean){
           this.name = name;
           this.SPrite;
           this.velocity = 0;
@@ -231,15 +268,21 @@
           this.downT = false;
           this.rightT = false;
           this.leftT = false;
+          this.Main = main_boolean;
+          this.fx = 0;
         }
       }
 
       document.addEventListener('keyup', (event) => {
         var name = event.key;
         var code = event.code;
-        
+        //alert(name);
         if (name == "ArrowUp"){
           Monkey1.upClick = false;
+          Monkey1.riseLimit = 0;
+        }
+        if (name == " "){
+          spacebar = false;
           Monkey1.riseLimit = 0;
         }
         if (name == "ArrowDown"){
@@ -256,7 +299,9 @@
       document.addEventListener('keydown', (event) => {
         var name = event.key;
         var code = event.code;
-
+        if (name == " "){
+          spacebar = true;
+        }
         if (name == "ArrowUp"){
           Monkey1.upClick = true;
         }
@@ -273,6 +318,10 @@
           window.open("localhost:3000", 'CanopyMonkey');
       
         }
+        if (name == "d"){
+          anty.SPrite.x += 3;
+        }
+        console.log(Monkey1.fx);
       });
       /*function isBorder (side){
         if (side == "left"){
@@ -287,12 +336,12 @@
       app.stage.addChild(botLeftP);
       app.stage.addChild(topRightP);
       botLeftP.y = 749, x = 0, width = 1, height = 1;
-      topRightP.y = -1500, topRightP.x = 10295, width = 1, height = 1;
+      topRightP.y = -1500, topRightP.x = 10000, width = 1, height = 1;//10295
       fastScroll.push(botLeftP, topRightP);
       console.log(botLeftP);
-      bottomFill(4000, "b", "Backround_0_1.png", 0);
-      bottomFill(4000, "b", "Backround_0_1_1.png", -750);
-      bottomFill(4000, "b", "Backround_0_1_2.png", -1500);
+      bottomFill(1501, "b", "Backround_0_1.png", 0);
+      //bottomFill(2000, "b", "Backround_0_1_1.png", -750);
+      //bottomFill(2000, "b", "Backround_0_1_2.png", -1500);
       newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
@@ -302,7 +351,7 @@
       //newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
       //newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
       //newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
-      bottomFill(10000, "g", "Grassy dirt 1.png");
+      bottomFill(2000, "g", "Grassy dirt 1.png");
 
       /*var sound = new Howl({
   src: ['sound.mp3']
@@ -328,24 +377,36 @@ sound.play();*/
       Monkey1.SPrite.width = 250;
       //let beat = new Audio('C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game\Public/Uh oh 1.m4a');
       
-      let beat = document.getElementById("Uh oh 1.m4a");
+      //let beat = document.getElementById("Uh oh 1.m4a");
       //beat.play();
       
       //const sound = PIXI.sound.Sound.from('resources/boing.mp3');
       //sound.play();
-
+      //let isORnot = "bigger"
       
       app.ticker.add((delta) => {
         elapsed += delta;
-
-
+        
+        /*if (Monkey1.SPrite.width == 0){
+          isORnot = "bigger";
+        }
+        if (Monkey1.SPrite.width == 700){
+          isORnot = "smaller";
+        }
+          if (isORnot == "smaller"){
+            Monkey1.SPrite.width -= 5;
+          }
+          if (isORnot == "bigger"){
+            Monkey1.SPrite.width += 5;
+          }*/
 
 
         isTouch(Monkey1, "wall");
         gravity_p0(Monkey1, 4);
         gravity_p0(anty, 7);
+        //gravity_p0(SpiderMan, 1);
 
-        if (Monkey1.upClick == true){
+        if (Monkey1.upClick == true || spacebar == true){
           if (Monkey1.riseLimit <= 20){
             rVar = 0;
             while (rVar < 20){
@@ -381,6 +442,7 @@ sound.play();*/
           if (Monkey1.leftT == false){
             //console.log(topRightP.x);
             if (topRightP.x > 1555){
+              Monkey1.fx += 2;
               //console.log("Workie!");
             
 
@@ -401,11 +463,13 @@ sound.play();*/
         if (Monkey1.leftClick == true){
           if (Monkey1.rightT == false){
             if (botLeftP.x <= -1){
+              Monkey1.fx -= 2;
               for (let i in fastScroll){
                 fastScroll[i].x += 7;
               }
               for (let i in slowScroll){
                 slowScroll[i].x += 2;
+                
               }
             }
           }
