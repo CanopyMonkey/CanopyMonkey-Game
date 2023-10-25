@@ -43,9 +43,10 @@
 
       //C:\Windows\System32\cmd.exe /k cd C:\Users\---------\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
       //export let name1, name2;
-      let slowScroll = [];
+      
       //require('./ES6.js');
-      //export {slowScroll};
+      //export {slowScroll};]
+      let slowScroll = [];
       let fastScroll = [];
       let backrounds = [];
       let func0 = [];
@@ -65,6 +66,10 @@
       let backrC = -1;
       let funcC0 = -1;
       let elapsed = 0.0;
+
+      function hide(name_834567890){
+        name_834567890.y = 1000;
+      }
       
       function bottomFill(length, kind, pic, heightP){
         let full = false;
@@ -200,6 +205,11 @@
               let tXvar10 = wall[tevar1].x - 165;
               let tYvar00 = wall[tevar1].y - (name.SPrite.height / 2 + (name.SPrite.height / 2)) + (name.SPrite.height / 40);
               let tYvar10 = wall[tevar1].y + (name.SPrite.height / 3);
+              if (name == Monkey1){
+                tYvar00 += 20;
+                //console.log(tYvar10+"!");
+                //console.log(t)
+              }
               
               let tXvar01 = wall[tevar1].x - 20;
               let tXvar11 = wall[tevar1].x + 38;
@@ -236,13 +246,14 @@
             if (tvar1 !== name.name){
               tHvar = ground[tvar1].y - name.SPrite.height;
               tHvar += 5;
-              tHvar1 = ground[tvar1].y - name.SPrite.height;
-              tHvar1 += 4
+              tHvar1 = ground[tvar1].y - name.SPrite.height, tHvar1 += 4;
               //console.log(tHvar);
               tXvar0 = ground[tvar1].x - name.SPrite.width;
               tXvar1 = ground[tvar1].x;
               
               if (name == Monkey1){
+                tHvar1 += 13;
+                tHvar += 13;
                 tXvar0 += 80;
                 tXvar1 += 40;
               } if (name.SPrite.y <= tHvar && name.SPrite.y >= tHvar1 && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
@@ -315,8 +326,8 @@
           Monkey1.rightClick = true;
           }
         if (name == "h"){
-          window.open("localhost:3000", 'CanopyMonkey');
-      
+          //window.open("localhost:3000", 'CanopyMonkey');
+          hide(Monkey1.SPrite);
         }
         if (name == "d"){
           anty.SPrite.x += 3;
@@ -363,7 +374,7 @@ sound.play();*/
       Monkey1 = new object_1("Monkey");
       anty = new object_1("Anty");
       anty.SPrite = PIXI.Sprite.from('anty_1.png');
-      Monkey1.SPrite =  PIXI.Sprite.from('Clean Baby Monkey.png');
+      Monkey1.SPrite =  PIXI.Sprite.from('pixil-frame-0.png');
       app.stage.addChild(Monkey1.SPrite);
       app.stage.addChild(anty.SPrite);
       anty.SPrite.x = 600;
@@ -484,7 +495,7 @@ sound.play();*/
       //spritesy.src = "Sprites.js";
       //Document.head.prepend(spritesy);
       //
-      
+      alert("HI");
     </script>
   </body>
 </html>
