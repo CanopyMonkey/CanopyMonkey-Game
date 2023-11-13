@@ -13,6 +13,7 @@
   "dependencies": {
     "es6": "^0.0.7",
     "express": "^4.18.2",
-    "howler": "^2.2.3"
+    "howler": "^2.2.3",
+    "pixi.js": "^7.3.2"
   }
 }
