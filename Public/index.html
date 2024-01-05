@@ -19,29 +19,7 @@
       function ranbom(){
 
       //import * as PIXI from "pixi.js";
-
-
-      /*function deadOrAlive (){
-        alert("Spiderman is " + spiderMan);
-      }
-<script type=”module” src=”./Main_Code/Functions.js”></s_c_ript>
-      spiderMan = "Dead";
-      
-      deadOrAlive();
-
-      spiderMan = "happy";
-
-      deadOrAlive();
-
-      spiderMan = "faster than flash";
-
-      deadOrAlive();
-
-      SpiderMan.Sprite =  PIXI.Sprite.from("ant_1.png");
-      app.stage.addChild(SpiderMan);
-      slowScroll.push(SpiderMan);*/
-      
-
+//<script type=”module” src=”./Main_Code/Functions.js”></s_c_ript>
 
 
 
@@ -74,13 +52,8 @@ const animatedSprite = new PIXI.AnimatedSprite(textureArray);
 }
       
 
-  const sheet = [
-    'jump a1a.png',
-    'jump a2a.png',
-    'jump a3a.png',
-    'jump a4a.png',
-];
-  animatedSprite = new PIXI.AnimatedSprite(sheet);
+
+
 
 
       let slowScroll = [];
@@ -328,7 +301,8 @@ const animatedSprite = new PIXI.AnimatedSprite(textureArray);
           this.Main = main_boolean;
           this.fx = 0;
           this.jump1 = [];
-          this.temp1 = [];
+          this.tempimages = [];
+          this.tempTexture = []
           this.aniTime
         }
         syncImage(Boolean){
@@ -349,15 +323,25 @@ const animatedSprite = new PIXI.AnimatedSprite(textureArray);
             jump1(i).width = 100;
           }
           }
+
+      let textureArray = [];
+
+      for (let i=0; i < 7; i++){
+        let texture = PIXI.Texture.from(this.tempimages[i]);
+        textureArray.push(texture);
+      };
+
+      let aniSprite = new PIXI.AnimatedSprite(textureArray);
+      app.stage.addChild(aniSprite);
+      aniSprite.x = 200;
+      aniSprite.y = 200;
+      aniSprite.animationSpeed =2.1;
+      aniSprite.play();
           if (varC1 == "jump1"){
             //jump1(1)
           }
         }
-        jump1F(boo){
-          if (boo = true){
-            
-          }
-        }
+        1
       }
 
       document.addEventListener('keyup', (event) => {
@@ -470,10 +454,42 @@ sound.play();*/
       Monkey1.SPrite.y = 225;
       Monkey1.SPrite.height = 250;
       Monkey1.SPrite.width = 250;
-      Monkey1.temp1 = ["jump a1a.png","jump a2a.png","jump a3a.png",'jump a4a.png','jump a5a.png','jump a6a.png','jump a7a.png'];
-      Monkey1.spritify("jump1");
-      //Monkey1.currentS.y = 300;
-      //Monkey1.currentS.x =500;
+      Monkey1.tempimages = ["jump a1a.png","jump a2a.png","jump a3a.png",'jump a4a.png','jump a5a.png','jump a6a.png','jump a7a.png'];
+      Monkey1.spritify("jump1", "jump a-a");
+
+
+    //animatedSprite = new PIXI.AnimatedSprite(sheet);
+    let alienImages = [
+      'jump a1a.png',
+      'jump a2a.png',
+      'jump a3a.png',
+      'jump a4a.png',
+      'jump a5a.png',
+      'jump a6a.png',
+      'jump a7a.png'
+    ];
+
+      let textureArray = [];
+
+      for (let i=0; i < 7; i++){
+        let texture = PIXI.Texture.from(alienImages[i]);
+        textureArray.push(texture);
+      };
+
+      let aniSprite = new PIXI.AnimatedSprite(textureArray);
+      app.stage.addChild(aniSprite);
+      aniSprite.x = 200;
+      aniSprite.y = 200;
+      aniSprite.animationSpeed =0.10000;
+      aniSprite.play();
+
+      for (let s in slowScroll){
+                  slowScroll[s].y += 2850 / 4;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y +=10000 / 4;
+                }
+      
       //let beat = new Audio('C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game\Public/Uh oh 1.m4a');
       
       //let beat = document.getElementById("Uh oh 1.m4a");
@@ -485,6 +501,7 @@ sound.play();*/
       //sound.play();
       //let isORnot = "bigger"
       });*/
+
       app.ticker.add((delta) => {
         elapsed += delta;
         
@@ -503,8 +520,8 @@ sound.play();*/
 
 
         isTouch(Monkey1, "wall");
-        gravity_p0(Monkey1, 4);
-        gravity_p0(anty, 7);
+        gravity_p0(Monkey1, 2);
+        gravity_p0(anty, 1);
         //gravity_p0(SpiderMan, 1);
 
         if (Monkey1.upClick == true || spacebar == true){
@@ -581,12 +598,7 @@ sound.play();*/
         Monkey1.syncImage(true);
       });
       
-      //const spritesy = document.createElement("Spritesy");
-      //spritesy.src = "Sprites.js";
-      //Document.head.prepend(spritesy);
-      //
-      //this.ticker.remove(delta);
-      //alert("HI");
+      
     </script>
   </body>
 </html>
