@@ -2,119 +2,288 @@
 <html>
   <head>
     <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type="text/javascript">
+      //alert("This alert box was called with the onload event");
+    </script>
+    <script type="module" src="RunCode.js"></script>
+    <script type="text/javascript" src="howler.js-master/src/howler.core.js"></script>
+    <beat src="Uh oh 1.m4a" id="beat" preload="auto" loop></beat>
   </head>
+
   <body>
-    <script>
+    <script src="lib/pixijs/pixi.js"></script>
+    <script type="module">
+      //import { AnimatedSprite, Texture } from 'pixi.js';
       let app = new PIXI.Application({ width: 1350, height: 745 });
       document.body.appendChild(app.view);
-      let Backround_0_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_1_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_2_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_3_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_4_0 = PIXI.Sprite.from("Backround_0_1.png");
-      let Backround_5_0 = PIXI.Sprite.from("Backround_0_1.png");
-      app.stage.addChild(Backround_0_0);
+      function ranbom(){}
+
+      //import * as PIXI from "pixi.js";
+//<script type=”module” src=”./Main_Code/Functions.js”></s_c_ript>
+
+
+
+
+      //C:\Windows\System32\cmd.exe /k cd C:\Users\---------\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game & start /b node index.js & start chrome.exe --app=http://localhost:3000 & timeout /t 5 /nobreak & taskkill /IM node.exe /F & exit
+      //export let name1, name2;
       
-      let dirtC = -1;
-      let backrC = -1;
+      //require('./ES6.js');
+      //export {slowScroll};]
+
+      
+//      import { AnimatedSprite, Texture } from 'pixi.js';
+/*
+const alienImages = [
+    'jump a1a.png',
+    'jump a2a.png',
+    'jump a3a.png',
+    'jump a4a.png',
+];
+const textureArray = [];
+
+for (let i = 0; i < 4; i++)
+{
+    const texture = PIXI.Texture.from(alienImages[i]);
+    textureArray.push(texture);
+}
+//texture.run()
+
+const animatedSprite = new PIXI.AnimatedSprite(textureArray);
+}*/
+      
+
+
+      function varF(){
+
+
       let slowScroll = [];
       let fastScroll = [];
+      let backrounds = [];
       let func0 = [];
-      let funcC0 = -1;
       let ground = [];
       let ceiling = [];
       let wall = [];
-      let var0 = false;
+      let barrier = [];
+      let evil_ant_1 = [];
       let tHvar;
       let tXvar0;
       let tXvar1;
+      let rVar;
+      let tHvar1;
+      let tHvar2;
+      let spacebar;
+      let temVar;
+      let gameTimer = 0;
+      let dirtC = -1;
+      let bCount = 0;
+      let backrC = -1;
+      let funcC0 = -1;
       let elapsed = 0.0;
+      let hitEnd = false;
+      }
       
-      function bottomFill(length, kind, pic){
+      function bottomFill(length, kind, pic, heightP){
         let full = false;
         let tvar = 0;
+        
         if (kind == "g"){
           while (full == false){
-          dirtC += 1;
-          if (tvar <= length){
-            console.log(tvar);
-            newSprite(645, tvar, true, 100, 100, "F", pic);
-            tvar += 100;
-          }
-          else{
-            full = true;
-          }}}
-        if (kind == "b"){
-          while (full == false){
-          backrC += 1;
-          if (tvar < length){
-            newSprite(645, tvar, true, 100, 100, b, pic);
-            tvar += 1500;
+            dirtC += 1;
+            if (tvar <= length){
+              newSprite(645, tvar, true, 100, 100, "F", pic);
+              tvar += 100;
             }
-          else{
-            full = true;
+            else{
+              full = true;
+            }
+          }
+        }
+        if (kind == "b"){
+          tvar = -200;
+          while (full == false){
+            backrC += 1;
+            if (tvar < length){
+              newSprite(heightP, tvar, false, 1500, 750, "s", pic, true);
+              bCount ++;
+              console.log(bCount);
+              tvar += 1500;
+            }
+            else{
+              full = true;
             }
           }
         }
       }
       
-      function newSprite(yv, xv, bar, wid, hit, scroll, pic) {
-          funcC0 += 1;
-          func0.push(pic);
+      function newSprite(yv, xv, bar, wid, hit, scroll, pic, bOrNot, optName) {
+        funcC0 += 1;
+        let tevar1;
 
-          let tevar = func0[funcC0];
-          func0.push(tevar1);
-          app.stage.addChild(tevar1);
-          console.log(pic);
-          tevar1.y = yv;
-          tevar1.x = xv;
-          tevar1.width = wid;
-          tevar1.height = hit;
-          if (scroll == "F" || scroll == "f"){
-            fastScroll.push(tevar1);
-          }
-          if (scroll == "S" || scroll == "s"){
-            slowScroll.push(tevar1);
-          }
-          if (bar == true){
-            ground.push(tevar1);
-          }
+        if (bOrNot == "gravity-ob"){
+
+        }
+        /*if (optName == undefined){
+          
+          
+        } if (optName !== undefined) {
+          console.log(66);
+
+          optName = PIXI.Sprite.from(pic);
+          console.log(optName + "PBBBBBBBBBBBBBBBBBBBBBBBT!");
+          func0.push(optName);
+          app.stage.addChild(optName);
+          tevar1 = optName;
+          console.log(botLeftP);
+        }*/
+
+        tevar1 = PIXI.Sprite.from(pic);
+        func0.push(tevar1);
+        app.stage.addChild(tevar1);
+        tevar1.y = yv;
+        tevar1.x = xv;
+        tevar1.width = wid;
+        tevar1.height = hit;
+        if (scroll == "F" || scroll == "f"){
+          fastScroll.push(tevar1);
+        }
+        if (scroll == "S" || scroll == "s"){
+          slowScroll.push(tevar1);
+        }
+        if (bar == true){
+          ground.push(tevar1);
+          ceiling.push(tevar1);
+          wall.push(tevar1);
+        }
+        if (bOrNot == true){
+          backrounds.push(tevar1);
+        }
       }
+
       function gravity_p0(name, times){
         times = Number(times);
         while (times >= 0){
-          isGround(name, "down");
-          //console.log(var0);
-          if(var0 !== true){
-            name.y += 1;
-            var0 = false;
+          isTouch(name, "down");
+          
+          if(name.downT !== true){
+            
+
+            if (name == Monkey1){
+              //console.log("botleft: " + botLeftP.y + " Monkey: " + Monkey1.SPrite.y);
+              //console.log(Monkey1.SPrite.y + ", " + fastScroll[10].y);
+              console.log();
+              if (botLeftP.y <= 749) {
+                Monkey1.SPrite.y += 1;
+                //console.log("MMMMMMMMMMMMMM!");
+
+              } if (botLeftP.y > 749){
+                //console.log("Moo");
+                for (let s in slowScroll){
+                  slowScroll[s].y -= 0.285;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y -= 1;
+                }
+              }
+            } else {
+              name.SPrite.y += 1;
+            }
+
+            /*if (name == Monkey1){
+              
+                for (let s in slowScroll){
+                  slowScroll[s].y -= 0.285;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y -= 1;
+                }
+              
+
+              
+            } 
+            if (name !== Monkey1){
+              name.SPrite.y += 1;
+            }*/
+            
           }
-          if (name.y <= 400){}
-          var0 = false;
+          
+          name.downT = false;
           times -= 1;
         }
-          
       }
-      function isGround(name, Direc){
-        //console.log(ground[0]);
-        for (let tvar1 in ground){
-          //console.log(tvar1);
-          if (Direc == "down"){
-            //console.log(ground[tvar1].y);
-            tHvar = ground[tvar1].y - 245;
-            tXvar0 = ground[tvar1].x - 210;
-            tXvar1 = ground[tvar1].x + 210;
-            if (name.y == tHvar && name.x >= tXvar0 && name.x <= tXvar1){
-              var0 = true;
-              //console.log("true");
+
+      function isTouch(name, Direc){
+        if (Direc == "wall"){
+            for (let tevar1 in wall){
+              let tXvar00 = wall[tevar1].x - 185;
+              let tXvar10 = wall[tevar1].x - 165;
+              let tYvar00 = wall[tevar1].y - (name.SPrite.height / 2 + (name.SPrite.height / 2)) + (name.SPrite.height / 40);
+              let tYvar10 = wall[tevar1].y + (name.SPrite.height / 3);
+              if (name == Monkey1){
+                tYvar00 += 20;
+                tYvar10 += 0;
+                //console.log(tYvar10+"!");
+                //console.log(t)
+              }
+              
+              let tXvar01 = wall[tevar1].x - 20;
+              let tXvar11 = wall[tevar1].x + 38;
+              //left
+              if (name.SPrite.x < tXvar10 && name.SPrite.y > tYvar00 && name.SPrite.x > tXvar00 && name.SPrite.y < tYvar10){
+                name.leftT = true;
+              }
+              //right
+              if (name.SPrite.y > tYvar00 && name.SPrite.x > tXvar01 && name.SPrite.y < tYvar10 && name.SPrite.x < tXvar11){
+                name.rightT = true;
+              }
+            }
+          }
+          if (Direc == "up"){
+            for (let tvar1 in ceiling){
+              tHvar = ground[tvar1].y + ((name.SPrite.height / 25) * 8);
+              tHvar2 = tHvar;
+              tHvar2 -= 1;
+              tXvar0 = ground[tvar1].x - (name.SPrite.width) + (name.SPrite.width / 10);
+              tXvar1 = ground[tvar1].x;
+              if(name == Monkey1){
+                tXvar0 += 80;
+                tXvar1 += 20;
+                //alert("Monkey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+              }
+              if (name.SPrite.y <= tHvar && name.SPrite.y >= tHvar2 && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
+                name.upT = true;
+                //console.log(name.upT);
+              }
+            }
+          }
+        if (Direc == "down"){
+          for (let tvar1 in ground){
+            if (tvar1 !== name.name){
+              tHvar = ground[tvar1].y - name.SPrite.height;
+              tHvar += 5;
+              tHvar1 = ground[tvar1].y - name.SPrite.height;
+              tHvar1 += 4;
+              //console.log(tHvar);
+              tXvar0 = ground[tvar1].x - name.SPrite.width;
+              tXvar1 = ground[tvar1].x;
+              
+              if (name == Monkey1){
+                tHvar1 += 13;
+                tHvar += 13;
+                tXvar0 += 80;
+                tXvar1 += 40;
+              } if (name.SPrite.y <= tHvar && name.SPrite.y >= tHvar1 && name.SPrite.x >= tXvar0 && name.SPrite.x <= tXvar1){
+                name.downT = true;
+              }
             }
           }
         } 
       }
 
       class object_1 {
-        constructor(){
+        constructor(name, main_boolean){
+          this.name = name;
           this.SPrite;
+          this.currentS;
           this.velocity = 0;
           this.time = 0;
           this.riseLimit = 0;
@@ -122,15 +291,66 @@
           this.downClick = false;
           this.leftClick = false;
           this.rightClick = false;
+          this.upT = false;
+          this.downT = false;
+          this.rightT = false;
+          this.leftT = false;
+          this.Main = main_boolean;
+          this.fx = 0;
+          this.jump1 = [];
+          this.tempimages = [];
+          this.tempTexture = []
+          this.aniTime
         }
+        syncImage(Boolean){
+          this.currentS.y = this.SPrite.y;
+          this.currentS.x = this.SPrite.x;
+          if(Boolean == true){
+            this.currentS.height = this.SPrite.height;
+            this.currentS.width = this.SPrite.width;
+          }
+        }
+        spritify(varC1){
+          for (i in this.temp){
+            if (varC1 == "jump1"){
+            jump1(i) = PIXI.Sprite.from(temp(i));
+            app.stage.addChild(jump1(i));
+            jump1(i).y = 1000;
+            jump1(i).height = 100;
+            jump1(i).width = 100;
+          }
+          }/*
+
+      let textureArray = [];
+
+      for (let i=0; i < 7; i++){
+        let texture = PIXI.Texture.from(this.tempimages[i]);
+        textureArray.push(texture);
+      };
+
+      let aniSprite = new PIXI.AnimatedSprite(textureArray);
+      app.stage.addChild(aniSprite);
+      aniSprite.x = 200;
+      aniSprite.y = 200;
+      aniSprite.animationSpeed =2.1;
+      aniSprite.play();
+          if (varC1 == "jump1"){
+            //jump1(1)
+          }*/
+        }
+        1
       }
 
       document.addEventListener('keyup', (event) => {
         var name = event.key;
         var code = event.code;
-        
+        //alert(name);
         if (name == "ArrowUp"){
           Monkey1.upClick = false;
+          Monkey1.riseLimit = 0;
+        }
+        if (name == " "){
+          spacebar = false;
           Monkey1.riseLimit = 0;
         }
         if (name == "ArrowDown"){
@@ -143,11 +363,20 @@
         if (name == "ArrowRight"){
           Monkey1.rightClick = false;
           }
+        /*if (name == "P"){
+          ticker.stop();
+        }
+        if (name == "U"){
+          ticker.start();
+        }*/
       })
+
       document.addEventListener('keydown', (event) => {
         var name = event.key;
         var code = event.code;
-
+        if (name == " "){
+          spacebar = true;
+        }
         if (name == "ArrowUp"){
           Monkey1.upClick = true;
         }
@@ -160,61 +389,206 @@
         if (name == "ArrowRight"){
           Monkey1.rightClick = true;
           }
+        if (name == "h"){
+          //window.open("localhost:3000", 'CanopyMonkey');
+          hide(Monkey1.SPrite);
+        }
+        if (name == "d"){
+          anty.SPrite.x += 3;
+        }
+        //console.log(Monkey1.fx);
       });
 
+      /*function isBorder (side){
+        if (side == "left"){
+          if (true){
 
-      bottomFill(3000, "g", PIXI.Sprite.from("Grassy dirt 1.png"));
+          }
+        }
+        
+      }*/
+      varF();
+
+      let botLeftP = PIXI.Sprite.from("Nothing ToSeeHere.png");
+      let topRightP = PIXI.Sprite.from("Nothing ToSeeHere.png");
+      app.stage.addChild(botLeftP);
+      app.stage.addChild(topRightP);
+      botLeftP.y = 749, botLeftP.x = 0, botLeftP.width = 1, botLeftP.height = 1;
+      topRightP.y = -1500, topRightP.x = 6400, topRightP.width = 1, topRightP.height = 1;//10295
+      fastScroll.push(botLeftP, topRightP);
+      console.log(botLeftP);
+      bottomFill(1501, "b", "Backround_0_1.png", 0);
+      bottomFill(1501, "b", "Backround_0_1_1.png", -750);
+      bottomFill(1501, "b", "Backround_0_1_2.png", -1500);
+      newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(300, 1600, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(0, 540, true, 100, 100, "f", "Grassy dirt 1.png");
+      newSprite(0, 640, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1300, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1400, true, 100, 100, "f", "Grassy dirt 1.png");
+      //newSprite(300,1500, true, 100, 100, "f", "Grassy dirt 1.png");
+      bottomFill(6800, "g", "Grassy dirt 1.png");
+
+      /*var sound = new Howl({
+  src: ['sound.mp3']
+});
+
+sound.play();*/
       console.log("bottomFill");
-      Backround_0_0.x = 0;
-      Backround_0_0.y = -155;
-      Backround_0_0.width = 1500;
-      Backround_0_0.height = 900;
-      let sprite1 =  PIXI.Sprite.from('Clean Baby Monkey.png');
-      app.stage.addChild(sprite1);
-      Monkey1 = new object_1();
-      Monkey1.SPrite = sprite1;
-      Monkey1.SPrite.x = 300;
-      Monkey1.SPrite.y = 400;
-      Monkey1.SPrite.height = 300;
-      Monkey1.SPrite.width = 300;
-      slowScroll.push(Backround_0_0);
       
-      
-      
+      let Monkey1 = new object_1("Monkey");
+      let anty = new object_1("Anty");
+      anty.SPrite = PIXI.Sprite.from('anty_1.png');
+      Monkey1.SPrite =  PIXI.Sprite.from('Nothing This Time.png');
+      Monkey1.currentS = PIXI.Sprite.from("pixil-frame-0.png");
+      app.stage.addChild(Monkey1.SPrite);
+      app.stage.addChild(Monkey1.currentS);
+      app.stage.addChild(anty.SPrite);
+      anty.SPrite.x = 600;
+      anty.SPrite.y = -1000;
+      anty.SPrite.height = 75;
+      anty.SPrite.width = 150;
+      fastScroll.push(anty.SPrite);
+      Monkey1.SPrite.x = 540;
+      Monkey1.SPrite.y = 225;
+      Monkey1.SPrite.height = 250;
+      Monkey1.SPrite.width = 250;
+      Monkey1.tempimages = ["jump a1a.png","jump a2a.png","jump a3a.png",'jump a4a.png','jump a5a.png','jump a6a.png','jump a7a.png'];
+      Monkey1.spritify("jump1", "jump a-a");
 
+/*
+    //animatedSprite = new PIXI.AnimatedSprite(sheet);
+    let alienImages = [
+      'jump a1a.png',
+      'jump a2a.png',
+      'jump a3a.png',
+      'jump a4a.png',
+      'jump a5a.png',
+      'jump a6a.png',
+      'jump a7a.png'
+    ];
+
+      let textureArray = [];
+
+      for (let i=0; i < 7; i++){
+        let texture = PIXI.Texture.from(alienImages[i]);
+        textureArray.push(texture);
+      };
+
+      let aniSprite = new PIXI.AnimatedSprite(textureArray);
+      app.stage.addChild(aniSprite);
+      aniSprite.x = 200;
+      aniSprite.y = 200;
+      aniSprite.animationSpeed =0.10000;
+      aniSprite.play();
+
+      for (let s in slowScroll){
+                  slowScroll[s].y += 2850 / 4;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y +=10000 / 4;
+                }*/
       
+      //let beat = new Audio('C:\Users\khaidenite\Documents\Documents\2020-2030\Programming\Pixi.js\CanopyMonkey-Game\Public/Uh oh 1.m4a');
+      
+      //let beat = document.getElementById("Uh oh 1.m4a");
+      //beat.play();
+      /*app.ticker.add((delta2) => {
+        elapsed += delta2;
+        Monkey1.SPrite.y = 200;
+      //const sound = PIXI.sound.Sound.from('resources/boing.mp3');
+      //sound.play();
+      //let isORnot = "bigger"
+      });*/
+
       app.ticker.add((delta) => {
         elapsed += delta;
-        gravity_p0(Monkey1.SPrite, 2);
-        if (Monkey1.upClick == true){
+        
+          gameTimer ++
+        isTouch(Monkey1, "wall");
+        gravity_p0(Monkey1, 2);
+        gravity_p0(anty, 1);
+        //gravity_p0(SpiderMan, 1);
+
+        if (Monkey1.upClick == true || spacebar == true){
           if (Monkey1.riseLimit <= 20){
-          Monkey1.SPrite.y -= 10;
+            rVar = 0;
+            while (rVar < 20){
+              isTouch(Monkey1, "up");
+              if (Monkey1.upT == false){
+
+                //Monkey1.SPrite.y -= 1;
+                if (botLeftP.y >= 749 && Monkey1.SPrite.y >= 225){
+                  //console.log("lalalalalalalala!");
+                  Monkey1.SPrite.y -= 0.8;
+                } else {
+                  for (let s in slowScroll){
+                  slowScroll[s].y += 0.285;
+                }
+                for (let f in fastScroll){
+                  fastScroll[f].y +=1;
+                }
+                }
+                
+              }
+              
+              Monkey1.upT = false;
+              rVar += 1;
+            }
           Monkey1.riseLimit += 1;
+            
+          Monkey1.upT = false;
           }
-        }
-        if (Monkey1.rightClick == true){
-          for (let i in fastScroll){
-            fastScroll[i].x -= 1;
-          }
-          for (let i in slowScroll){
-            slowScroll[i].x -= 1;
-          }
-        }
-        if (Monkey1.leftClick == true){
-          for (let i in fastScroll){
-            fastScroll[i].x += 1;
-          }
-          for (let i in slowScroll){
-            slowScroll[i].x += 1;
-          }
-          //console.log(func0[1].x);
         }
 
+
+        if (Monkey1.rightClick == true){
+          if (Monkey1.leftT == false){
+            //console.log(topRightP.x);
+            if (topRightP.x > 1555){
+              Monkey1.fx += 2;
+              //console.log("Workie!");
+            
+
+            
+            for (let i in fastScroll){
+              fastScroll[i].x -= 7;
+            }
+            for (let i in slowScroll){
+              slowScroll[i].x -= 2;
+            }
+          } else {
+            hitEnd = true;
+            alert("You won!");
+            alert("Time:" )////////////////////////////////////////////////////////////////////work needed here!
+          }
+          }
+          else{
+            Monkey1.leftT = false;
+          }
+        }
+
+        if (Monkey1.leftClick == true){
+          if (Monkey1.rightT == false){
+            if (botLeftP.x <= -1){
+              Monkey1.fx -= 2;
+              for (let i in fastScroll){
+                fastScroll[i].x += 7;
+              }
+              for (let i in slowScroll){
+                slowScroll[i].x += 2;
+                
+              }
+            }
+          }
+          else{
+            Monkey1.rightT = false;
+          }
+        }
+        Monkey1.syncImage(true);
       });
-      
-      //const spritesy = document.createElement("Spritesy");
-      //spritesy.src = "Sprites.js";
-      //Document.head.prepend(spritesy);
       
       
     </script>
