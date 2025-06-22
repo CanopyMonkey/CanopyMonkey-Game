@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pixi Test</title>
+  <script src="https://unpkg.com/pixi.js-legacy@7.2.4/dist/pixi-legacy.min.js"></script>
+</head>
+<body>
+  <script>
+    console.log('PIXI:', typeof PIXI);
+
+    const app = new PIXI.Application({ width: 640, height: 360 });
+    document.body.appendChild(app.view);
+  </script>
+</body>
+</html>
